@@ -1,0 +1,25 @@
+body {
+  margin: 0, auto;
+  font-family: sans-serif;
+  background-image: linear-gradient(to bottom right, #60e0cc, #1e544c);
+  background-size: cover;
+  background-attachment: fixed;
+  align-items: center;
+}
+
+.voiceinator {
+  padding: 2rem;
+  width: 70%;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 1rem;
+  position: relative;
+  background: #e1efece0;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+}
+
+textarea {
+  height: 20rem;
+}
