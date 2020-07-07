@@ -60,7 +60,7 @@ function toggle(restart){
 	speechSynthesis.cancel();
 	if (restart == true){
 		if (comments.length === 0 ){
-			console.log("nothing!");
+			console.log("No comments found");
 			msg.text = "No comments found";
 			speechSynthesis.speak(msg);
 		} else {
@@ -76,4 +76,15 @@ var link = document.querySelector("#link");
 link.addEventListener("change", function(){
 	fetchComments(this.value);
 	console.log(this.value);
+})
+
+var rate = document.querySelector('[name="rate"]');
+rate.addEventListener('change', function(){
+	msg['rate'] = this.value;
+	toggle(true);
+})
+var pitch = document.querySelector('[name="pitch"]');
+pitch.addEventListener('change', function(){
+	msg['pitch'] = this.value;
+	toggle(true);
 })
