@@ -1,25 +1,30 @@
-var proxy_url = 'https://thingproxy.freeboard.io/fetch/';
+let proxy_url = 'https://thingproxy.freeboard.io/fetch/';
+let post = "";
 var comments = [];
 
 
 function fetchComments(main_url){
 	comments = [];
+	console.log(post.length);
 	var voiceSettings = document.querySelector(".voiceSettings");
 	var loading = document.querySelector(".loading");
+	var loadingText = document.querySelector("#loadingText");
 	voiceSettings.classList.add("blur");
 	loading.style.visibility = "visible";
-	fetch(proxy_url + main_url).then(function (response) {
-		return response.text();
-	}).then(function(data){
+	loadingText.innerHTML = "&nbsp; Fetching Post";
+	fetch(proxy_url + main_url).then(response => response.text()).then(function(data){
 	  // Convert the HTML string into a document object
 	  var parser = new DOMParser();
 	  var doc = parser.parseFromString(data, 'text/html');
+		post = doc.querySelector(".share-update-card__update-text");
+		loadingText.innerHTML = "&nbsp; Fetching Comments";
+		console.log(post.innerText);
+		//console.log(doc);
 	  var articles = doc.querySelectorAll("article");
 		console.log(articles.length);
 		if (articles.length!=0){
 			for (i = 0; i < articles.length; i++){
 				comments.push(articles[i].querySelector("span"));
-				msg.text = comments[0].innerText;
 				console.log(articles[i].querySelector("span"));
 				voiceSettings.classList.remove("blur");
 				loading.style.visibility = "hidden";
@@ -57,18 +62,20 @@ function setVoice(){
 }
 
 function toggle(restart){
+	msg.text= "";
 	speechSynthesis.cancel();
 	if (restart == true){
+		msg.text += post.innerText;
 		if (comments.length === 0 ){
 			console.log("No comments found");
 			msg.text = "No comments found";
 			speechSynthesis.speak(msg);
 		} else {
 			for (i=0; i < comments.length; i++){
-				msg.text = "comment" + (i+1) + "  " + comments[i].innerText;
-				speechSynthesis.speak(msg);
+				msg.text += "comment" + (i+1) + "  " + comments[i].innerText;
 			}
 		}
+		speechSynthesis.speak(msg);
 	}
 }
 
