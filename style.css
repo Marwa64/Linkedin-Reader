@@ -6,12 +6,10 @@ body {
   background-attachment: fixed;
   align-items: center;
 }
-
-.voiceinator {
+.voiceSettings{
   padding: 2rem;
   width: 70%;
   margin: auto;
-  margin-top: 100px;
   border-radius: 1rem;
   position: relative;
   background: #e1efece0;
@@ -19,7 +17,19 @@ body {
   z-index: 1;
   box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
 }
-
-textarea {
-  height: 20rem;
+#linkContainer{
+  margin-top: 100px;
+}
+input[type=text]{
+  border-radius: 10px;
+  height: 50px;
+}
+.blur{
+  filter: blur(4px);
+}
+.loading{
+  font-weight: bold;
+  font-size: 21px;
+  color: white;
+  visibility: hidden;
 }
