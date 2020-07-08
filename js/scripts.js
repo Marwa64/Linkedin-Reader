@@ -1,4 +1,4 @@
-let proxy_url = 'https://cors-anywhere.herokuapp.com/';
+let proxy_url = 'https://cors-anywhere.herokuapp.com/'; // Used locally but not needed for Git Pages
 let post = "";
 let comments = [];
 
