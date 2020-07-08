@@ -1,6 +1,6 @@
 let proxy_url = 'https://thingproxy.freeboard.io/fetch/';
 let post = "";
-var comments = [];
+let comments = [];
 
 
 function fetchComments(main_url){
@@ -16,7 +16,7 @@ function fetchComments(main_url){
 	  // Convert the HTML string into a document object
 	  var parser = new DOMParser();
 	  var doc = parser.parseFromString(data, 'text/html');
-		post = doc.querySelector(".share-update-card__update-text");
+		post = doc.querySelector(".share-update-card__update-text").innerText;
 		loadingText.innerHTML = "&nbsp; Fetching Comments";
 		console.log(post.innerText);
 		//console.log(doc);
@@ -65,10 +65,10 @@ function toggle(restart){
 	msg.text= "";
 	speechSynthesis.cancel();
 	if (restart == true){
-		msg.text += post.innerText;
+		msg.text += post;
 		if (comments.length === 0 ){
 			console.log("No comments found");
-			msg.text = "No comments found";
+			msg.text += "No comments found";
 			speechSynthesis.speak(msg);
 		} else {
 			for (i=0; i < comments.length; i++){
