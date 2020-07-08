@@ -1,4 +1,4 @@
-let proxy_url = 'https://thingproxy.freeboard.io/fetch/';
+let proxy_url = 'https://cors-anywhere.herokuapp.com/';
 let post = "";
 let comments = [];
 
