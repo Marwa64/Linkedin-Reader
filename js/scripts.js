@@ -12,6 +12,7 @@ function fetchComments(main_url){
 	voiceSettings.classList.add("blur");
 	loading.style.visibility = "visible";
 	loadingText.innerHTML = "&nbsp; Fetching Post";
+	console.log(proxy_url);
 	fetch(proxy_url+main_url).then(response => response.text()).then(function(data){
 	  // Convert the HTML string into a document object
 	  var parser = new DOMParser();
